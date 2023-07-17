@@ -4,6 +4,7 @@ import * as bodyParser from 'body-parser';
 import * as morgan from 'morgan';
 import * as mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
+import * as cors from 'cors';
 import router from './api';
 
 dotenv.config();
@@ -21,6 +22,8 @@ mongoose.connect(MONGO_URI!)  // non-null assertion (!)
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 })
+
+app.use(cors());
 
 app.use(morgan('dev'));
 
